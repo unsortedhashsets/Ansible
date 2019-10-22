@@ -1,0 +1,20 @@
+---
+- name: Setup Fedora
+  hosts: test-Fedora-29
+  user: fedora
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - ../roles/update
+    - ../roles/gnome
+    - ../roles/chrome
+
+- name: RHEL - Tooling.next
+  hosts: test-Fedora-29
+  user: fedora
+  become: no
+  gather_facts: yes
+
+  roles:
+    - ../roles/toolingnext-nvm
