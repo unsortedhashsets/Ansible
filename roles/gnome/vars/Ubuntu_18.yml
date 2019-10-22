@@ -1,0 +1,6 @@
+---
+gnome_pkgs:
+  - "ubuntu-gnome-desktop"
+  - "gnome-panel"
+  - "gnome-settings-daemon"
+  - "metacity"
