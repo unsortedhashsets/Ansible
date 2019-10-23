@@ -1,6 +1,23 @@
 ---
+- name: Pre-tasks for Fedora
+  hosts: openstack
+  become: yes
+  user: fedora
+  gather_facts: yes
+
+    - name: Install python
+      raw: dnf install -y python libselinux-python python2-dnf
+      when: ansible_distribution_version == "29"
+
+    - name: Install python
+      raw: dnf install -y python libselinux-python python3-dnf
+      when: ansible_distribution_version == "30"
+
 - name: Setup Fedora
   hosts: test-Fedora-29
+  become: yes
+  user: fedora
+  gather_facts: yes
 
   roles:
     - ../roles/update
