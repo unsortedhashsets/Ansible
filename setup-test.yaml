@@ -9,11 +9,9 @@
 
     - name: Install python 2
       raw: dnf install -y python libselinux-python python2-dnf
-      when: "'29' in version.stdout"
 
     #- name: Install python 3
     #  raw: dnf install -y python libselinux-python python3-dnf
-    #  when: "'30' in version.stdout"
       
 - name: Setup Fedora
   hosts: test-Fedora-29
