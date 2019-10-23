@@ -1,7 +1,7 @@
 ---
 - name: Pre-tasks for Fedora
   hosts: test-Fedora-29
-  become: yes
+  become: no
   user: fedora
   gather_facts: no
 
@@ -10,8 +10,8 @@
     - name: Install python 2
       raw: dnf install -y python libselinux-python python2-dnf
 
-    #- name: Install python 3
-    #  raw: dnf install -y python libselinux-python python3-dnf
+    - name: Install python 3
+      raw: dnf install -y python libselinux-python python3-dnf
       
 - name: Setup Fedora
   hosts: test-Fedora-29
