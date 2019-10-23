@@ -3,17 +3,21 @@
   hosts: test-Fedora-29
   become: yes
   user: fedora
-  gather_facts: yes
+  gather_facts: no
 
   pre_tasks:
+    
+    - name: Check Fedora version
+      shell: lsb_release -a | grep release
+      register: version  
 
-    - name: Install python
+    - name: Install python 2
       raw: dnf install -y python libselinux-python python2-dnf
-      when: ansible_distribution_version == "29"
+      when: "'29' in version.stdout"
 
-    - name: Install python
+    - name: Install python 3
       raw: dnf install -y python libselinux-python python3-dnf
-      when: ansible_distribution_version == "30"
+      when: "'30' in version.stdout"
       
 - name: Setup Fedora
   hosts: test-Fedora-29
