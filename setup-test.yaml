@@ -1,6 +1,6 @@
 ---
 - name: Pre-tasks for Fedora
-  hosts: openstack
+  hosts: test-Fedora-29
   become: yes
   user: fedora
   gather_facts: yes
