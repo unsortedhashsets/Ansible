@@ -1,6 +1,5 @@
 ---
 - name: Pre-tasks for Fedora
-  hosts: openstack
   become: yes
   user: fedora
   gather_facts: yes
@@ -16,7 +15,6 @@
       when: ansible_distribution_version == "30"
       
 - name: Setup Fedora
-  hosts: openstack
   become: yes
   user: fedora
   gather_facts: yes  
@@ -27,7 +25,6 @@
     - ../roles/chrome
 
 - name: RHEL - Tooling.next
-  hosts: openstack
   user: fedora
   become: no
   gather_facts: yes
