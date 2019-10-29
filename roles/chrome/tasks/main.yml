@@ -6,16 +6,6 @@
   when: (ansible_distribution != "Ubuntu")
   ignore_errors: True
 
-- name: check 
-  shell: ls /etc/yum.repos.d/
-  register: chrome_check
-
-- debug:
-    msg: "{{chrome_check}}"
-
-- debug:
-    msg: "{{google-chrome.repo}}"
-
 - name: Import Google Chrome signing key
   rpm_key: 
     key: https://dl-ssl.google.com/linux/linux_signing_key.pub 
