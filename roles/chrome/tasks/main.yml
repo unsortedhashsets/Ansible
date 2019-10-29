@@ -11,7 +11,7 @@
   register: check
 
 - debug:
-    msg: "{{check.stdout}}"
+    msg: "{{check}}"
 
 - name: Import Google Chrome signing key
   rpm_key: 
