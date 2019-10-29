@@ -1,22 +1,22 @@
 ---
 - name: Pre-tasks for Fedora
-  hosts: test-Fedora-30
+  hosts: openstack
   become: yes
   user: fedora
   gather_facts: yes
 
   pre_tasks:
 
-    - name: Install python
+    - name: Install python2-dnf
       raw: dnf install -y python libselinux-python python2-dnf
       when: ansible_distribution_version == "29"
 
-    - name: Install python
+    - name: Install python3-dnf
       raw: dnf install -y python libselinux-python python3-dnf
       when: ansible_distribution_version == "30"
       
 - name: Setup Fedora
-  hosts: test-Fedora-30
+  hosts: openstack
   become: yes
   user: fedora
   gather_facts: yes  
@@ -27,7 +27,7 @@
     - ../roles/chrome
 
 - name: RHEL - Tooling.next
-  hosts: test-Fedora-30
+  hosts: openstack
   user: fedora
   become: no
   gather_facts: yes
