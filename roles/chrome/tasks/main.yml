@@ -1,7 +1,7 @@
 ---
 - name: Install Google Chrome repo
   copy: 
-    src: google-chrome.repo 
+    src: ../roles/chrome/files/google-chrome.repo 
     dest: /etc/yum.repos.d/
   when: (ansible_distribution != "Ubuntu")
   ignore_errors: True
