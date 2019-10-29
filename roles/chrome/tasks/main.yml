@@ -8,10 +8,13 @@
 
 - name: check 
   shell: ls /etc/yum.repos.d/
-  register: check
+  register: chrome_check
 
 - debug:
-    msg: "{{check}}"
+    msg: "{{chrome_check}}"
+
+- debug:
+    msg: "{{google-chrome.repo}}"
 
 - name: Import Google Chrome signing key
   rpm_key: 
