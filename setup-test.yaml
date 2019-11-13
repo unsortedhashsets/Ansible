@@ -8,13 +8,6 @@
   
     - name: Gather information about previously created networks
       os_networks_facts:
-        auth:
-          auth_url: "{{auth_url}}"
-          username: "{{username}}"
-          password: "{{password}}"
-          project_name: "{{project_name}}"
-          project_domain_id: "{{project_domain_id}}"
-          user_domain_name: "{{user_domain_name}}"
       register: result
 
     - name: Show openstack networks
