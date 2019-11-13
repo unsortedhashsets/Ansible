@@ -1,36 +1,22 @@
 ---
-- name: Pre-tasks for Fedora
-  hosts: all
-  become: yes
-  user: fedora
-  gather_facts: yes
+- name: VERIFY - openstack
+  hosts: localhost
+  connection: local
+  gather_facts: no
 
-  pre_tasks:
-
-    - name: Install python2-dnf
-      raw: dnf install -y python libselinux-python python2-dnf
-      when: ansible_distribution_version == "29"
-
-    - name: Install python3-dnf
-      raw: dnf install -y python libselinux-python python3-dnf
-      when: ansible_distribution_version == "30"
-      
-- name: Setup Fedora
-  hosts: all
-  become: yes
-  user: fedora
-  gather_facts: yes  
+  tasks:
   
-  roles:
-    - ../roles/update
-    - ../roles/gnome
-    - ../roles/chrome
+    - name: Gather information about previously created networks
+      os_networks_facts:
+        auth:
+          auth_url: "{{auth_url}}"
+          username: "{{username}}"
+          password: "{{password}}"
+          project_name: "{{project_name}}"
+          project_domain_id: "{{project_domain_id}}"
+          user_domain_name: "{{user_domain_name}}"
+      register: result
 
-- name: RHEL - Tooling.next
-  hosts: all
-  user: fedora
-  become: no
-  gather_facts: yes
-
-  roles:
-    - ../roles/toolingnext-nvm
+    - name: Show openstack networks
+      debug:
+        msg: "{{ result }}"
