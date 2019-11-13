@@ -9,7 +9,3 @@
     - name: Gather information about previously created networks
       os_networks_facts:
       register: result
-
-    - name: Show openstack networks
-      debug:
-        msg: "{{ result }}"
