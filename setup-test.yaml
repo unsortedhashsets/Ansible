@@ -15,8 +15,8 @@
             project_domain_id: 
             user_domain_name: 
             auth_url: 
-        filters:
-          vm_state: active
+     #   filters:
+     #     vm_state: active
       register: result
 
     - fail:
