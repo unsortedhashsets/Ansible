@@ -1,5 +1,5 @@
 ---
-- name: VERIFY - openstack
+- name: Check free vm's space on OpenStack
   hosts: localhost
   connection: local
   gather_facts: no
@@ -7,5 +7,11 @@
   tasks:
   
     - name: Gather information about previously created networks
-      os_networks_facts:
+      os_server_facts:
+        filters:
+          status: ACTIVE
       register: result
+
+    - fail:
+        msg: "Check openstack manualy"
+      when: result.ansible_facts == "openstack_servers{{:}} []"
