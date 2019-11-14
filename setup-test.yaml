@@ -8,10 +8,8 @@
   
     - name: Gather information about previously created networks
       os_server_facts:
-      filters:
-        vm_state: active
       register: result
 
     - fail:
         msg: "Check openstack manualy"
-      when: result.ansible_facts != "openstack_servers{{:}} []"
+      when: "'active' not in result"
