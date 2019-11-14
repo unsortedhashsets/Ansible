@@ -8,6 +8,13 @@
   
     - name: Gather information about previously created networks
       os_server_facts:
+        auth:
+            username: 
+            password: 
+            project_name: 
+            project_domain_id: 
+            user_domain_name: 
+            auth_url: 
         filters:
           status: ACTIVE
       register: result
