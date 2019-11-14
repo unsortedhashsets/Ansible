@@ -7,7 +7,7 @@
   tasks:
   
     - name: Gather information about previously created networks
-      os_server_info:
+      os_server_facts:
         auth:
             username: 
             password: 
