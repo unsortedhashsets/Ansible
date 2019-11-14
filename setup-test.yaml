@@ -14,4 +14,4 @@
 
     - fail:
         msg: "Check openstack manualy"
-      when: result.ansible_facts == "openstack_servers{{:}} []"
+      when: result.ansible_facts != "openstack_servers{{:}} []"
