@@ -10,6 +10,9 @@
       os_server_facts:
       register: result
 
+    - debug:
+        msg: "{{result}}"
+
     - fail:
         msg: "Check openstack manualy"
       when: "'active' in result"
