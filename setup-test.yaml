@@ -1,3 +1,4 @@
+# Prepared to be used in Ansible Tower
 ---
 - name: Check free vm's space on OpenStack
   hosts: localhost
@@ -5,11 +6,10 @@
   gather_facts: no
 
   tasks:
-  
     - name: Gather information about previously created networks
       os_server_facts:
       register: result
 
     - fail:
         msg: "Check openstack manualy"
-      when: "'active' not in result"
+      when: "'active' in result"
