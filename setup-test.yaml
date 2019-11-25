@@ -8,8 +8,6 @@
   tasks:
     - name: Gather information about previously created networks
       os_server_facts:
-        filters:
-          vm_state: active
       register: result
 
     - fail:
