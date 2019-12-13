@@ -1,5 +1,0 @@
----
-- name: Update all packages
-  package:
-    name: "*"
-    state: latest

@@ -1,18 +1,10 @@
 # Prepared to be used in Ansible Tower
 ---
-- name: Check free vm's space on OpenStack
-  hosts: localhost
-  connection: local
-  gather_facts: no
+- name: Setup Fedora
+  hosts: all
+  user: fedora
+  become: yes
+  gather_facts: yes
 
-  tasks:
-    - name: Gather information about previously created networks
-      os_server_facts:
-      register: result
-
-    - fail:
-        msg: "Check openstack manually"
-        var: item
-      with_items:
-        - "{{ result.ansible_facts.openstack_servers | map(attribute='vm_state') | list }}"
-      when: item == "active"
+  roles:
+    - ../VaultTest
