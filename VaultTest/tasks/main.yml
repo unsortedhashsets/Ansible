@@ -1,4 +1,7 @@
 ---
+- name: "Include secret"
+  include_vars: "secret.yml"
+
 - name: Test Ansible Vault
   debug:
     msg: "Ansible vault test: {{topsecret}}"
